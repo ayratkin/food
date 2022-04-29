@@ -1,22 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
-
-    // Модальное окно
-
-    const btnShowModal = document.querySelector('.btn_white'),
-        btnCloseModal = document.querySelector('.modal__close'),
-        modal = document.querySelector('.modal');
-
-
-    btnShowModal.addEventListener('click', () => {
-        modal.style.display = 'block';
-    });
-
-    btnCloseModal.addEventListener('click', () => {
-        modal.style.display = 'none';
-    });
-
     // Табы
-    
+
     const tabs = document.querySelectorAll('.tabheader__item'), // Пункты табов
           tabContent = document.querySelectorAll('.tabcontent'), // Блоки табов
           tabContainer = document.querySelector('.tabheader__items');
@@ -52,5 +36,45 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     });
+
+// Modal
+
+const btnShowModal = document.querySelectorAll('[data-modal]'),
+    btnCloseModal = document.querySelector('[data-close]'),
+    modal = document.querySelector('.modal');
+
+// Открытие модалки при клике на кнопку
+btnShowModal.forEach(btn => {
+    btn.addEventListener('click', openModal);
+});
+
+// Функция открытия модалки
+function openModal() {
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+}
+
+// Функция закрытия модалки
+function closeModal() {
+    modal.style.display = 'none';
+    document.body.style.overflow = '';
+}
+
+// Закрытие модального окна при клике на крестик внутри модалки
+btnCloseModal.addEventListener('click', closeModal);
+
+// Закрытие модального окна при клике мимо него
+modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+        closeModal();
+    }
+});
+
+// Закрытие модального окна на Escape
+document.addEventListener('keydown', (e) => {
+    if (e.code === ('Escape')) {
+        closeModal();
+    }
+});
 
 });
