@@ -4,13 +4,11 @@ const btnShowModal = document.querySelector('.btn_white'),
       btnCloseModal = document.querySelector('.modal__close'),
       modal = document.querySelector('.modal');
 
-function openModal() {
+
+btnShowModal.addEventListener('click', () => {
     modal.style.display = 'block';
-}
+});
 
-function closeModal() {
+btnCloseModal.addEventListener('click', () => {
     modal.style.display = 'none';
-}
-
-btnShowModal.addEventListener('click', openModal);
-btnCloseModal.addEventListener('click', closeModal);
+});
