@@ -94,3 +94,44 @@ function showModalByScroll() {
 window.addEventListener('scroll', showModalByScroll);
 
 }); 
+
+// Добавление новых карточек в ежедневное меню
+class Card {
+    constructor(imgSrc, imgAtlText, menuName, menuDescriptions, price) {
+
+        this.imgSrc = imgSrc;
+        this.imgAtlText = imgAtlText;
+        this.menuName = menuName;
+        this.menuDescriptions = menuDescriptions;
+        this.price = price;
+
+    }
+
+    render() {
+
+        let container = document.querySelector('.menu__field .container');
+        const card = document.createElement('div');
+
+        card.innerHTML = `
+        <div class="menu__item">
+            <img src= ${this.imgSrc} alt=${this.imgAtlText}>
+            <h3 class="menu__item-subtitle">${this.menuName}</h3>
+            <div class="menu__item-descr">${this.menuDescriptions}</div>
+            <div class="menu__item-divider"></div>
+            <div class="menu__item-price">
+                <div class="menu__item-cost">Цена:</div>
+                <div class="menu__item-total">
+                <span>${this.price}</span> грн/день</div>
+            </div>
+        </div>
+        `;
+
+        container.append(card);
+    }
+
+}
+
+new Card(
+    'img/tabs/elite.jpg', 'some img', 'lorem', 
+    'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel officiis porro est possimus enim ad aut voluptatibus, unde recusandae consequatur.', '200'
+    ).render();
