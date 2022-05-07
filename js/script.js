@@ -93,9 +93,6 @@ function showModalByScroll() {
 // Срабатывание модалки при прокрутке до конца страницы
 window.addEventListener('scroll', showModalByScroll);
 
-}); 
-
-
 // Добавление новых карточек в ежедневное меню
 class Card {
     constructor(imgSrc, imgAtlText, menuName, menuDescriptions,
@@ -142,7 +139,6 @@ class Card {
 
         container.append(card);
     }
-
 }
 
 new Card(
@@ -162,3 +158,7 @@ new Card(
     'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel officiis porro est possimus enim ad aut voluptatibus, unde recusandae consequatur.',
     '300'
     ).render();
+
+}); 
+
+Незначительное исправление
