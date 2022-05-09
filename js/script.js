@@ -147,25 +147,14 @@ new Card(
     '100', 'menu__item'
     ).render();
 
-new Card(
-    'img/tabs/elite.jpg', 'some img', 'lorem', 
-    'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel officiis porro est possimus enim ad aut voluptatibus, unde recusandae consequatur.',
-    '200'
-    ).render();
-
-new Card(
-    'img/tabs/elite.jpg', 'some img', 'lorem', 
-    'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel officiis porro est possimus enim ad aut voluptatibus, unde recusandae consequatur.',
-    '300'
-    ).render();
 
     // Timer
-    const deadline = '2023-07-08';
+    const deadline = '2023-05-09';
 
     function getTimeRemainig(endtime) {
         const t = Date.parse(endtime) - Date.parse(new Date()),
               days = Math.floor(t / (1000 * 60 * 60 * 24)),
-              hours = Math.floor(t / ((1000 * 60 * 60) % 24) ),
+              hours = Math.floor((t / (1000 * 60 * 60) % 24) ),
               minutes = Math.floor((t / 1000 / 60) % 60),
               seconds = Math.floor((t / 1000) % 60);
 
@@ -179,10 +168,11 @@ new Card(
     }
 
     function setClock(selector, endtime) {
-        const timer = document.querySelector('selector'),
-              days = document.querySelector('#days'),
-              hours = document.querySelector('#hours'),
-              seconds = document.querySelector('#seconds'),
+        const timer = document.querySelector(selector),
+              days = timer.querySelector('#days'),
+              hours = timer.querySelector('#hours'),
+              minutes = timer.querySelector('#minutes'),
+              seconds = timer.querySelector('#seconds'),
               timeInterval = setInterval(updateClock, 1000);
             
               updateClock();
@@ -191,9 +181,9 @@ new Card(
             const t = getTimeRemainig(endtime);
 
             days.innerHTML = t.days;
-            days.innerHTML = t.hours;
-            days.innerHTML = t.minutes;
-            days.innerHTML = t.seconds;
+            hours.innerHTML = t.hours;
+            minutes.innerHTML = t.minutes;
+            seconds.innerHTML = t.seconds;
 
             if (t.total <= 0) {
                 clearInterval(timeInterval);
@@ -202,6 +192,8 @@ new Card(
     }
 
     setClock('.timer', deadline);
+
+
 
 }); 
 
